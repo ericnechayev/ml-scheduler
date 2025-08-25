@@ -1,0 +1,11 @@
+name: iris_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy=1.23.5
+  - scikit-learn=1.0.2
+  - joblib
+  - jupyter
+  - pip

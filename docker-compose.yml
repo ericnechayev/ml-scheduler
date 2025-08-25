@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mount source code folder for re-load during development
+      - ./api:/app/api  
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  scheduler:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    command: watchfiles "python scheduled_task/scheduler_service.py" /app/scheduled_task
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    volumes:
+      # Mount source code folder for re-load during development
+      - ./scheduled_task/:/app/scheduled_task
+    depends_on:
+      - api

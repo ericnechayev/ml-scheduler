@@ -1,0 +1,37 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.p
+
+# Ignore virtual environments
+.venv/
+venv/
+env/
+
+# Ignore test artifacts
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.mypy_cache/
+tests/
+
+# Ignore build and distribution artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore Git and editor configs
+.git/
+.gitignore
+.gitattributes
+Dockerfile
+docker-compose.yml
+*.log
+*.swp
+*.swo
+.idea/
+.vscode/
