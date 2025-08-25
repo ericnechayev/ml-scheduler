@@ -11,19 +11,19 @@ Welcome! This application is a **Task Scheduler** that simulates periodic re-tra
 ```mermaid
 graph TD
     %% Clients
-    Client["Client\n(sends prediction requests)"]
+    Client["Client<br>(sends prediction requests)"]
 
     %% API Service
-    API["API Service\n(api/main.py)"]
-    Pydantic["Validate Input\n(Pydantic Models)"]
-    Serving["Serve Model\n(serving_utils.py)"]
-    ProdModels["Production Models\n(prod_models/)"]
+    API["API Service<br>(api/main.py)"]
+    Pydantic["Validate Input<br>(Pydantic Models)"]
+    Serving["Serve Model<br>(serving_utils.py)"]
+    ProdModels["Production Models<br>(prod_models/)"]
 
     %% Scheduler Service
-    Scheduler["Scheduler Service\n(scheduler_service.py)"]
-    Utils["Scheduler Utilities\n(scheduled_task_utils/)"]
-    Retrained["Candidate Models\n(retrained_models/)"]
-    TestData["Test Data\n(test_data/)"]
+    Scheduler["Scheduler Service<br>(scheduler_service.py)"]
+    Utils["Scheduler Utilities<br>(scheduled_task_utils/)"]
+    Retrained["Candidate Models<br>(retrained_models/)"]
+    TestData["Test Data<br>(test_data/)"]
 
     %% Flow connections
     Client -->|POST /predict| API
