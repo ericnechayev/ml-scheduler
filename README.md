@@ -8,7 +8,7 @@ Welcome! This application is a **Task Scheduler** that simulates periodic re-tra
 - To see the origin of the trained models, refer to the [training.ipynb](training.ipynb) notebook.
 - APScheduler Documentation: https://apscheduler.readthedocs.io/
 
-```
+```mermaid
 graph TD
     %% External Client
     Client["Client (sends prediction requests)"]
