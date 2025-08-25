@@ -1,12 +1,14 @@
 ### Introduction
 
-Welcome! This application is a **Task Scheduler** that simulates periodic re-training jobs, running checks and updating the **model serving** on a **_FastAPI_** service upon request.
+Welcome! This application is an ML API combined with a **Task Scheduler** that simulates periodic re-training jobs, running checks and updating the production **model served** on a **_FastAPI_** service upon request.
 
-- Main API Routes File: [api/main.py](api/main.py)
-- Main Task Scheduler File: [scheduled_task/scheduler_service.py](scheduled_task/scheduler_service.py)
+- Main API Routes Code: [api/main.py](api/main.py)
+- Main Task Scheduler Code: [scheduled_task/scheduler_service.py](scheduled_task/scheduler_service.py)
 - For a Quick-Start Guide, please refer to the [quick-start-guide.pdf](quick-start-guide.pdf) document.
 - To see the origin of the trained models, refer to the [training.ipynb](training.ipynb) notebook.
 - APScheduler Documentation: https://apscheduler.readthedocs.io/
+
+### Architecture
 
 ```mermaid
 graph TD
@@ -16,8 +18,8 @@ graph TD
     %% API Service
     API["API Service<br>(api/main.py)"]
     Pydantic["Validate Input<br>(Pydantic Models)"]
-    Serving["Serve Model<br>(serving_utils.py)"]
-    ProdModels["Production Models<br>(prod_models/)"]
+    Serving["Serve Model<br>(api/serving_utils.py)"]
+    ProdModels["Production Models<br>(api/prod_models/)"]
 
     %% Scheduler Service
     Scheduler["Scheduler Service<br>(scheduler_service.py)"]
