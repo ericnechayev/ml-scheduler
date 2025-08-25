@@ -1,3 +1,22 @@
+## App Components
+
+- **API Service**
+
+  - Runs a FastAPI application exposing ML prediction endpoints.
+  - Uses Pydantic models for request validation and schema docs.
+  - Includes unit tests under api/tests/, including for:
+    - Model Initialization
+    - Model Serialization
+    - Model Updating
+    - Prediction Requests
+    - API Responses
+
+- **Scheduler Service** via **_APScheduler_**:
+  - Runs independently of the API as a separate container.
+  - Simulates re-trainings that consider updates to the API model being served.
+  - Checks data quality, API health & response latency, and ML evaluation metrics before updating models.
+  - If metrics are satisfactory, requests an update to the model served by sending a new model object.
+
 ## Project File Structure
 
 ```
@@ -22,22 +41,3 @@
 ├── Dockerfile # Container build definition
 ├── docker-compose.yml # Multi-service orchestration
 ```
-
-## App Components
-
-- **API Service**
-
-  - Runs a FastAPI application exposing ML prediction endpoints.
-  - Uses Pydantic models for request validation and schema docs.
-  - Includes unit tests under api/tests/, including for:
-    - Model Initialization
-    - Model Serialization
-    - Model Updating
-    - Prediction Requests
-    - API Responses
-
-- **Scheduler Service**:
-  - Runs independently of the API as a separate container.
-  - Simulates re-trainings that consider updates to the API model being served.
-  - Checks data quality, API health & response latency, and ML evaluation metrics before updating models.
-  - If metrics are satisfactory, requests an update to the model served by sending a new model object.
