@@ -10,37 +10,40 @@ Welcome! This application is a **Task Scheduler** that simulates periodic re-tra
 
 ```mermaid
 graph TD
-    %% External Client
-    Client["Client (sends prediction requests)"]
+    %% Clients
+    Client["Client\n(sends prediction requests)"]
 
     %% API Service
-    API["API Service (api/main.py)"]
-    API -->|Validates input| Pydantic["Pydantic Models (schema_config.py)"]
-    API -->|Processes request| Serving["Serving Utilities (serving_utils.py)"]
-    Serving -->|Loads latest production model| ProdModels["Production Models (prod_models/)"]
-    Serving -->|Returns predictions| API
-    API -->|Response| Client
+    API["API Service\n(api/main.py)"]
+    Pydantic["Validate Input\n(Pydantic Models)"]
+    Serving["Serve Model\n(serving_utils.py)"]
+    ProdModels["Production Models\n(prod_models/)"]
 
     %% Scheduler Service
-    Scheduler["Scheduler Service (scheduler_service.py)"]
-    Scheduler -->|Runs scheduled jobs| Utils["Scheduler Utilities (scheduled_task_utils/)"]
-    Utils -->|Retrain / validate models| Retrained["Candidate Models (retrained_models/)"]
-    Utils -->|Evaluate models on test data| TestData["Test Data (test_data/)"]
-    Retrained -->|Promote selected model| ProdModels
+    Scheduler["Scheduler Service\n(scheduler_service.py)"]
+    Utils["Scheduler Utilities\n(scheduled_task_utils/)"]
+    Retrained["Candidate Models\n(retrained_models/)"]
+    TestData["Test Data\n(test_data/)"]
 
-    %% Additional context
-    subgraph DockerContainers
+    %% Flow connections
+    Client -->|POST /predict| API
+    API -->|Validate input| Pydantic
+    API -->|Process request| Serving
+    Serving -->|Load model| ProdModels
+    Serving -->|Return prediction| API
+    API -->|Response| Client
+
+    Scheduler -->|Run scheduled jobs| Utils
+    Utils -->|Retrain & Validate| Retrained
+    Utils -->|Evaluate on test set| TestData
+    Retrained -->|Promote validated model| ProdModels
+
+    %% Docker Containers (compact)
+    subgraph DockerContainers["Docker Containers"]
+        direction TB
         API
         Scheduler
     end
-
-    subgraph Notes
-        Note1["- API container keeps FastAPI running"]
-        Note2["- Scheduler container runs BlockingScheduler to handle periodic re-training jobs"]
-        Note3["- Model promotion happens after validation and testing"]
-    end
-
-    ProdModels -->|Used for predictions| Serving
 ```
 
 ### Quick-Start Summary
