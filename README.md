@@ -10,8 +10,8 @@ Welcome! This application is a **Task Scheduler** that simulates periodic re-tra
 
 ```
 graph TD
-%% External Client
-Client["Client (sends prediction requests)"]
+    %% External Client
+    Client["Client (sends prediction requests)"]
 
     %% API Service
     API["API Service (api/main.py)"]
