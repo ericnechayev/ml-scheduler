@@ -1,3 +1,9 @@
+## Introduction
+
+- For a Quick-Start Guide, refer to the _quick-start-guide.pdf_ document.
+- To see the origin of the trained models, refer to the _training.ipynb_ notebook.
+- APScheduler Documentation: https://apscheduler.readthedocs.io/
+
 ## App Components
 
 - **API Service**
