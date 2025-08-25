@@ -6,7 +6,7 @@ import logging
 import numpy as np
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from api.iris_config import FEATURE_NAMES
+from api.schema_config import FEATURE_NAMES
 from scheduled_task_utils.evaluation_utils import assess_model_update
 from scheduled_task_utils.model_update_utils import get_current_model, update_model_served
 from scheduled_task_utils.validation_pipeline import perform_routine_checks

@@ -5,7 +5,7 @@ from fastapi.testclient import TestClient
 import numpy as np
 
 from api.main import app
-from api.iris_config import FEATURE_NAMES
+from api.schema_config import FEATURE_NAMES
 
 
 MODELS_DIR = "api/prod_models"

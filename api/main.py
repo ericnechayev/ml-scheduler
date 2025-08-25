@@ -7,7 +7,7 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from api.iris_config import Iris, FEATURE_NAMES
+from api.schema_config import Iris, FEATURE_NAMES
 from api.serving_utils import load_model, save_retrained_model, increment_model_version
 
 
